@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Iva index{% endblock %}
+
+{% block body %}
+    <h1>Iva index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Porcentaje</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for iva in ivas %}
+            <tr>
+                <td>{{ iva.id }}</td>
+                <td>{{ iva.porcentaje }}</td>
+                <td>
+                    <a href="{{ path('iva_show', {'id': iva.id}) }}">show</a>
+                    <a href="{{ path('iva_edit', {'id': iva.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('iva_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,118 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+.col-md-10, .col-md-2 {
+	background: -moz-linear-gradient( #a6e3db, white); /* For Firefox 3.6 to 15 */
+	padding-top: 20px;
+	padding-bottom: 30px;
+
+}
+
+.nav > li a {
+	color: black;
+}
+
+.nav-item a {
+	color: black;
+	
+}
+
+.col-md-2 li {
+	list-style:none;
+}
+
+#cs {
+	background-color: #ddded6;
+}
+
+.col-md-2 > .nav-item .dropdown-toggle {
+	width: 120%;
+	color: #8c8a8d;
+}
+
+
+
+.nav-item {
+	padding-right: 50px;
+}
+
+.col-md-2 > .nav-item .dropdown-menu .dropdown-item:nth-child(3) {
+	background-color: #ddded6;
+}
+
+
+.registro {
+	background-color: #ffe5b4;
+	text-align: center;
+	margin-top: 50px;
+	padding-top: 20px;
+	margin-left: 300px;
+	margin-right: 300px;
+}
+
+.container-fluid #proveedor{
+	background-color: #f2f4f6;
+	color:  #686877;
+	
+}
+
+.table {
+	color: #686877;
+	margin-left: 20px;
+}
+
+#nuevo {
+	margin-left: 200px;
+}
+
+.container-fluid > .large-8 > .col-md-8, .container-fluid > .row > .col-md-4 {	
+	border: 1px #dfdfea double;	
+}
+
+.container-fluid > .large-8 > .col-md-8 {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+
+
+/*imagenes de la derecha de la pagina de inicio*/
+#lateral > .col-md-3 {
+	margin-top: 180px;
+}
+
+.medium-12 > .col-md-8 {
+	margin-bottom: 50px;
+}
+
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#lateral > .col-md-9 {
+	padding-left: 60px;
+	text-align: justify;
+}
+
+#lateral > .col-md-9 > h5 {
+	color: #ffa500;
+}
+
+.dashboard-detailed__right{
+	text-align: center;
+	padding-bottom: 50px;
+}
+
+#encabezadoinicio h1 {
+	margin-left: 400px;
+	margin-top: 60px;
+	color: #ff947a;
+}
+
+#encabezadoinicio p {
+	margin-left: 120px;
+}
+
+
+/*esto es para la pagina de new factura*/
+#paso {
+	
+}

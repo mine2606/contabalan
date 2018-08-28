@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+      {% block stylesheets %}
+            {{ parent() }}
+            <link rel='stylesheet' href="{{ asset('build/appregistro.css')}}">
+        {% endblock %}
+   
+      {% block header %}
+        {% include 'user/_base/header.html.twig' %}
+      {% endblock %}
+
+      {% block body %} 
+      {% endblock %}
+
+      {% block footer %}
+        {% include 'user/_base/footer.html.twig' %}
+        
+      {% endblock %}
+
+      {% block javascripts %} 
+
+       {{ parent() }}
+       
+      {% endblock %}

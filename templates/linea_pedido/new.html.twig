@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New LineaPedido{% endblock %}
+
+{% block body %}
+    <h1>Create new LineaPedido</h1>
+
+    {{ include('linea_pedido/_form.html.twig') }}
+
+    <a href="{{ path('linea_pedido_index') }}">back to list</a>
+{% endblock %}

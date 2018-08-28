@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LineaPedido{% endblock %}
+
+{% block body %}
+    <h1>LineaPedido</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ linea_pedido.id }}</td>
+            </tr>
+            <tr>
+                <th>Cantidad</th>
+                <td>{{ linea_pedido.Cantidad }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('linea_pedido_index') }}">back to list</a>
+
+    <a href="{{ path('linea_pedido_edit', {'id': linea_pedido.id}) }}">edit</a>
+
+    {{ include('linea_pedido/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit LineaPedido{% endblock %}
+
+{% block body %}
+    <h1>Edit LineaPedido</h1>
+
+    {{ include('linea_pedido/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('linea_pedido_index') }}">back to list</a>
+
+    {{ include('linea_pedido/_delete_form.html.twig') }}
+{% endblock %}

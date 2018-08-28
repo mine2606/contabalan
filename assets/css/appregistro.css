@@ -1,0 +1,18 @@
+#registro {
+	text-align: center;
+}
+
+.btn-black {
+	background-color: black;
+	color: white;
+}
+
+.btn-black:hover {
+	background-color: grey;
+}
+
+#registro .card-body {	
+	border-color: #a6e3db;
+}
+
+

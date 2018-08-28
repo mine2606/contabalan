@@ -1,0 +1,45 @@
+<div class="container-fluid">
+	<dic class="row">
+		<div class="col-md-10">
+			<ul class="nav justify-content-center" id="menu">
+				<li class="nav-item dropdown">
+				    <a class="nav-link" href="{{ path('inicio') }}">Inicio</a>				   
+				</li>
+				<li class="nav-item">
+				    <a class="nav-link" href="{{ path('factura_index') }}">Factura</a>
+				</li>					
+			  	<li class="nav-item dropdown">
+				    <a class="nav-link" href="{{ path('contacto') }}">Contactos</a>				    
+				</li>
+				<li class="nav-item dropdown">
+				    	<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+				    <div class="dropdown-menu">
+					    <a class="dropdown-item" href="compra_new">Compra</a>
+					    <a class="dropdown-item" href="#">Venta</a>				    
+				    </div>
+				</li>
+				
+			</ul>
+		</div>
+		<div class="col-md-2">		
+			<li class="nav-item">                    
+	            {% if is_granted ('IS_AUTHENTICATED_FULLY') %}
+					<div class="dropdown">
+						<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    {{app.user.username}}
+						</a>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						    <a class="dropdown-item" href="#">Action</a>
+						    <a class="dropdown-item" href="#">Another action</a>
+						    <a class="dropdown-item" href="/logout">Cerrar sesion</a>
+						</div>
+					</div>
+	            {% else %}
+	                <a data-toggle="modal" href="#exampleModal" class="amodal nav-link"><span>
+	                Acceso Usuarios <i class="fas fa-user"></i></span></a>
+	            {% endif %}	            
+	    	</li>
+		</div>	
+	</div>
+</div>
+

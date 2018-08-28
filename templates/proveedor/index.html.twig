@@ -1,0 +1,49 @@
+{% extends 'contacto/_base.html.twig' %}
+
+{% block body %}
+  
+        <h1>Proveedores</h1>
+
+         <!-- Button trigger modal -->
+        <a href="{{ path('proveedor_new') }}" class="btn btn-secondary btn-sm" role="button" data-toggle="modal" data-target="#modalP" aria-pressed="true">Nuevo proveedor</a>
+
+<div class="container-fluid"> 
+    <table class="table">
+        <thead class="thead" id="proveedor">
+            <tr>
+              <th scope="col">Nº</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Teléfono</th>
+              <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proveedor in proveedor %}
+                <tr>
+                    <td>{{ proveedor.id }}</td>
+                    <td><a href="{{ path('proveedor_edit', {'id': proveedor.id}) }}">{{ proveedor.nombre }}</a></td>
+                    <td>{{ proveedor.telefono }}</td>
+                    <td>{{ proveedor.email }}</td>
+                    <!--<td>{{ proveedor.producto }}</td>                
+                    <td>{{ proveedor.referencia }}</td>
+                    <td>{{ proveedor.nif }}</td>
+                    <td>{{ proveedor.calle }}</td>
+                    <td>{{ proveedor.cpostal }}</td>
+                    <td>{{ proveedor.poblacion }}</td> -->
+                    <td>
+                        <a href="{{ path('proveedor_show', {'id': proveedor.id}) }}">+ Info</a>
+ 
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="10">no records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{{ include('proveedor/_modal.html.twig')}}
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'inicio/base.html.twig' %}
+
+{% block title %}Contalaban{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">		
+		<div class="row" id="encabezadoinicio">				
+			<h1>¡Bienvenido a Contabalan!</h1>
+			<p>Crea tu primera factura en un segundo y envíala a tu cliente. Selecciona tu 		propio diseño y logo para darle a tus facturas un toque personal. </p>
+						
+			<!--<a href="{{ path('factura_new') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Nueva factura</a>-->			
+		</div>
+		<div class="dashboard-detailed__right columns">	
+		    <a title="Hacer factura" href="{{ path('factura_new')}}"><img src="https://www.hotelgest.com/wp-content/uploads/2018/02/factura-hotel.png" alt="Los Tejos" height="200"/></a>
+		    <p>Haz click aquí</p>		
+		</div>		
+	</div>
+
+	<div class="row" id="lateral">
+		<div class="col-md-9">			
+			<h5><strong>Qué es Contabalan</strong></h5>				
+			<p>	Es un programa de contabilidad que te permitirá cumplir con las obligaciones fiscales que pueda tener cualquier empresa. Tiene la ventaja de que a diferencia de otros software de contabilidad, Contabalan es gratuito. Es flexible y se adapta a las diferentes necesidades de cualquier negocio, pyme o asesoría fiscal pueda tener.
+			</p>
+						 
+			<h5><strong>Toda la gestión contable en un único programa</strong></h5>
+			<p>Podrás realizar asientos contables de forma muy sencilla y cumplir con las obligaciones fiscales telemáticamente. Por ejemplo, la liquidación de IVA, presentar el modelo de IRPF, los libros del Registro Mercantil, las Cuentas Anuales… También podrás gestionar el inmovilizado, la tesorería o la contabilidad analítica.</p>
+			 
+			<h5><strong>Tesorería</strong></h5>
+			<p>La tesorería es algo que necesita de muy buena organización. Con Contablan podrás enlazar la introducción de asientos con la gestión de tesorería. De esta forma al introducir una factura emitida podrás activar el libro de efectos a cobrar. En el caso contrario, si contabilizas una factura recibida, enlazarás con el libro de efectos a pagar.</p>
+			 
+			<h5><strong>Facturación</strong></h5>
+			<p>Gracias al módulo de facturación podrás realizar las facturas de tus servicios y generar remesas bancarias en diferentes formatos, como XML SEPA C19 Y C58.</p>
+			 
+			<h5><strong>Exportable a múltiples formatos</strong></h5>
+			<p>Por último, una de las mayores ventajas de Contasol es que podrás exportar toda información de tus informes y documentos a PDF, a los gestores de correo más importantes, a Microsoft Office y a OpenOffice.</p>	
+		</div>
+		<div class="col-md-3">
+			<div>
+				<img src="https://s3.amazonaws.com/cdn.wp.m4ecmx/wp-content/uploads/2018/04/18224825/C%C3%B3mo-llevar-la-contabilidad-y-facturaci%C3%B3n-en-tu-eCommerce-de-manera-f%C3%A1cil-y-segura-compressor.jpg" height="200">
+			</div>
+
+			
+		</div>
+	</div>
+
+
+{% endblock %}

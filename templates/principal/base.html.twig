@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+      {% block stylesheets %}
+            {{ parent() }}
+            <link rel='stylesheet' href="{{ asset('build/appprincipal.css')}}">
+        {% endblock %}
+   
+      {% block header %}
+        {% include 'principal/_base/header.html.twig' %}
+      {% endblock %}
+
+      {% block body %} 
+      {% endblock %}
+
+      {% block footer %}
+        {% include 'principal/_base/footer.html.twig' %}
+        
+      {% endblock %}
+
+      {% block javascripts %} 
+
+       {{ parent() }}
+       
+      {% endblock %}

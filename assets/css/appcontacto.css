@@ -1,0 +1,8 @@
+#menudos .row .col a {
+	color: black;
+
+}
+
+#menudos .row .col a:hover {
+	background-color: #eaedf1;
+}

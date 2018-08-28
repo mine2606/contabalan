@@ -1,0 +1,35 @@
+{% extends 'contacto/_base.html.twig' %}
+
+{% block title %}Gestoria index{% endblock %}
+
+{% block body %}
+    <h1>Gestoria index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gestorium in gestorias %}
+            <tr>
+                <td>{{ gestorium.id }}</td>
+                <td>{{ gestorium.nombre }}</td>
+                <td>
+                    <a href="{{ path('gestoria_show', {'id': gestorium.id}) }}">show</a>
+                    <a href="{{ path('gestoria_edit', {'id': gestorium.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('gestoria_new') }}">Create new</a>
+{% endblock %}

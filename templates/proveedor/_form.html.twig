@@ -1,0 +1,63 @@
+{{ form_start(form) }}
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<div>
+					<p>* Nombre
+	                {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Nombre', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>           
+				</div>
+				<div>
+					<p>* Email
+	                {{ form_widget(form.email, { 'attr': {'placeholder': 'Email', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>
+				</div>
+				<div>
+					<p>* Teléfono
+	                {{ form_widget(form.telefono, { 'attr': {'placeholder': 'Teléfono', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>
+				</div>
+				<div>
+					<p>Producto
+	                {{ form_widget(form.producto, { 'attr': {'placeholder': 'Producto', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>   
+				</div>
+				<div>
+					<p>Referencia
+	                {{ form_widget(form.referencia, { 'attr': {'placeholder': 'Referencia', 'class': 'form-control'}}) }}</p>		
+				</div>
+			</div>
+			<div class="col">
+				<div>
+					<p>Nif
+	                {{ form_widget(form.nif, { 'attr': {'placeholder': 'Nif', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>           
+				</div>
+				<div>
+					<p>Calle
+	                {{ form_widget(form.calle, { 'attr': {'placeholder': 'Calle', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>
+				</div>
+				<div>
+					<p>Código Postal
+	                {{ form_widget(form.cpostal, { 'attr': {'placeholder': 'Código postal', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>
+				</div>
+				<div>
+					<p>Poblacion
+	                {{ form_widget(form.poblacion, { 'attr': {'placeholder': 'Poblacion', 'class': 'form-control'}}) }}</p> 
+	                <div class="dropdown-divider"></div>         
+				</div>				
+			</div>
+		</div>	
+		<div class="dropdown-divider"></div>
+
+		<div class="row">			
+			<button id="nuevo" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalCenter">{{ button_label|default('Guardar') }}
+			</button>				
+		</div>
+	
+	</div>   	   
+	
+ {{ form_end(form) }}

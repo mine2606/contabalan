@@ -1,0 +1,126 @@
+footer {
+  background-color: black;  
+  color: white;
+}
+
+#encabezado{
+	/*background-color: #81e5c9; */
+	background: -moz-linear-gradient(#f1d697, white); /* For Firefox 3.6 to 15 */
+	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-right: 20px;
+
+}
+
+#logo {
+	margin-left: 15px;
+}
+
+a:hover {
+	color: #63666b; 
+}
+
+a{
+	color: black;
+}
+
+#final {
+	
+	background: -moz-linear-gradient(white, #fcdea8); /* For Firefox 3.6 to 15 */
+	color: black;
+	text-align: right;	
+	padding-top: 30px;
+	padding-bottom: 30px;	
+	
+}
+
+
+.nav-link {
+	color: black;
+}
+
+.btn-info {
+	background-image: repeating-linear-gradient(5deg, transparent, transparent 60%, rgba(255, 255, 255, 0.1) 61%, rgba(255, 255, 255, 0.1) 65%, transparent 66%, transparent 100%);
+	animation: 10s linear infinite;
+	background-color: #f97333;
+
+	
+}
+
+#texto {
+	padding-top: 100px;
+	text-align: center;
+	border-style: dotted;
+	border-color: #a6e3db;
+}
+
+#texto h3 {
+	font-size: bolder;
+}
+
+#principio {
+	padding-top: 30px;
+	padding-bottom: 60px;
+}
+
+/* azul clarito #cbe7eb */
+
+
+#tic > h1, #tic > h3 {
+	text-align: center;
+
+}
+
+#tic {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	/*background-color: #e9e9e9;*/
+	background-color: #f6f6f6;
+}
+
+#tic > h1 {
+	font-size: 3.8em;
+	font-weight: bolder;
+}
+
+#tic ul {
+	list-style:none;
+	font-size: 1.5em;
+	line-height: 3;
+}
+
+#tic .fa-check {
+	color: orange;
+}
+
+#tic #pc {
+	text-align: center;
+}
+
+#tic .row {
+	padding-top: 30px;
+}
+
+#exampleModal {
+	background-color: #dbfff3; 	
+
+}
+
+.modal-header .close, .modal-header .close:hover {
+	color: red;
+}
+
+.modal-header #exampleModalLabel {
+	text-align: center;
+}
+
+#enlace {
+	text-align: right;
+	padding-right: 10px;
+	color:#656366;
+}
+
+#enlace a {
+	color: black;
+}
+
