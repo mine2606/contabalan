@@ -18,11 +18,25 @@ class GestoriaController extends Controller
     /**
      * @Route("/", name="gestoria_index", methods="GET")
      */
-    public function index(GestoriaRepository $gestoriaRepository): Response
+    public function index(GestoriaRepository $gestoriaRepository, Request $request): Response
     {
-        return $this->render('gestoria/index.html.twig', ['gestorias' => $gestoriaRepository->findAll()]);
-    }
+        $gestorium = new Gestoria();
+        $form = $this->createForm(GestoriaType::class, $gestorium);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($gestorium);
+            $em->flush();
+
+            return $this->redirectToRoute('gestoria_index');
+        }
+
+        return $this->render('gestoria/index.html.twig', [
+            'gestorium' => $gestorium,
+            'form' => $form->createView(),
+        ]);
+    }
     /**
      * @Route("/new", name="gestoria_new", methods="GET|POST")
      */

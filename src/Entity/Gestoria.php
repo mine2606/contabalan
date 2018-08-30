@@ -20,6 +20,11 @@ class Gestoria extends User
      */
     private $id;
 
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $nombre;
+
     
 
     
@@ -35,6 +40,18 @@ class Gestoria extends User
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
         $this->ficheros = new ArrayCollection();
+    }
+
+    public function getNombre(): ?string
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre(string $nombre): self
+    {
+        $this->nombre = $nombre;
+
+        return $this;
     }
     
 }

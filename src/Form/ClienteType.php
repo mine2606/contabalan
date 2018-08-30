@@ -2,10 +2,14 @@
 
 namespace App\Form;
 
+use App\Form\FacturaType;
+use App\Entity\Factura;
 use App\Entity\Cliente;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormView;
 
 class ClienteType extends AbstractType
 {
@@ -19,6 +23,7 @@ class ClienteType extends AbstractType
             ->add('cpostal')
             ->add('poblacion')
             ->add('provincia')
+            ->add('guardar', SubmitType::class, array())
         ;
     }
 

@@ -1,0 +1,37 @@
+{% extends 'empresa/_base.html.twig' %}
+
+{% block body %}
+
+<div class="row container-fluid" id="registro">
+    <div class="col">    	
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Regístra tu empresa</h4>
+                    {{ form_start(form) }}
+                    <hr>
+                    {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Nombre de empresa' } }) }}
+                    <br>
+                    <br>
+                    <hr>
+                    {{ form_widget(form.username, { 'attr': {'placeholder': 'Nombre de usuario' } }) }}
+                    <br>
+                    <br>
+                    {{ form_widget(form.email, { 'attr': {'placeholder': 'Email' } }) }}
+                    <br>
+                    <br>
+                    {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Contraseña' } }) }}
+                    <br>
+                    <br>
+                    {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Repetir contraseña' } }) }}                    
+                    <br>
+                    {{ form_widget(form.roles, { 'attr': {'placeholder': 'roles' } }) }}    
+                    <hr>
+
+                    <button type="submit" class="btn btn-black">Registrar</button>
+                    <br>
+                    <br>
+                    {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>

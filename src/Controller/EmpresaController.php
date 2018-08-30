@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 
 /**
  * @Route("/empresa")
@@ -23,16 +26,21 @@ class EmpresaController extends Controller
         return $this->render('empresa/index.html.twig', ['empresas' => $empresaRepository->findAll()]);
     }
 
+    
+
     /**
      * @Route("/new", name="empresa_new", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $empresa = new Empresa();
         $form = $this->createForm(EmpresaType::class, $empresa);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // 3) Encode the password (you could also do this via Doctrine listener)
+            $password = $passwordEncoder->encodePassword($empresa, $empresa->getPlainPassword());
+            $empresa->setPassword($password);
             $em = $this->getDoctrine()->getManager();
             $em->persist($empresa);
             $em->flush();
@@ -47,15 +55,17 @@ class EmpresaController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="empresa_show", methods="GET")
+     * @Route("/{id}", name="empresa_show", methods="GET", requirements={"id"="\d+"})
      */
     public function show(Empresa $empresa): Response
     {
         return $this->render('empresa/show.html.twig', ['empresa' => $empresa]);
     }
 
+    
+
     /**
-     * @Route("/{id}/edit", name="empresa_edit", methods="GET|POST")
+     * @Route("/{id}/edit", name="empresa_edit", methods="GET|POST", requirements={"id"="\d+"})
      */
     public function edit(Request $request, Empresa $empresa): Response
     {
@@ -74,6 +84,8 @@ class EmpresaController extends Controller
         ]);
     }
 
+
+
     /**
      * @Route("/{id}", name="empresa_delete", methods="DELETE")
      */
@@ -87,4 +99,7 @@ class EmpresaController extends Controller
 
         return $this->redirectToRoute('empresa_index');
     }
+
+
+     
 }

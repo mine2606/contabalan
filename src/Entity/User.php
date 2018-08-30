@@ -38,13 +38,13 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank()
      */
-    private $username;
+    protected $username;
 
     /**
      * @Assert\NotBlank()
      * @Assert\Length(max=4096)
      */
-    private $plainPassword;
+    protected $plainPassword;
 
     /**
      * The below length depends on the "algorithm" you use for encoding
@@ -52,17 +52,17 @@ class User implements UserInterface
      *
      * @ORM\Column(type="string", length=64)
      */
-    private $password;
+    protected $password;
 
     /**
      * @ORM\Column(type="array")
      */
-    private $roles;
+    protected $roles;
 
     /**
      * @ORM\Column(name="is_active", type="boolean")
      */
-    private $isActive;
+    protected $isActive;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Fichero", mappedBy="user", orphanRemoval=true)

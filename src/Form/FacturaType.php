@@ -9,6 +9,7 @@ use App\Entity\Proveedor;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 
@@ -17,6 +18,12 @@ class FacturaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder 
+        ->add('fecha', DateType::class, array(
+             'label' => 'Fecha',
+             'format' => 'dd MM yyyy',
+             'years' => range(date('2018'), date('Y')),
+             'required' => true
+          ))
         ->add('referencia')
         ->add('total')                
         ->add('cliente',EntityType::class,array(
@@ -24,7 +31,10 @@ class FacturaType extends AbstractType
                 'choice_label' => function ($cliente) {
                     return $cliente->getNombre();
             }))
+         ->add('guardar', SubmitType::class, array())
+        
         ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -17,11 +17,6 @@ class LineaPedido
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $Cantidad;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Producto", inversedBy="lineapedidos")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -36,18 +31,6 @@ class LineaPedido
     public function getId()
     {
         return $this->id;
-    }
-
-    public function getCantidad(): ?int
-    {
-        return $this->Cantidad;
-    }
-
-    public function setCantidad(int $Cantidad): self
-    {
-        $this->Cantidad = $Cantidad;
-
-        return $this;
     }
 
     public function getProducto(): ?Producto

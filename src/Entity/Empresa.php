@@ -6,6 +6,7 @@ use App\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Producto;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmpresaRepository")
@@ -17,24 +18,21 @@ class Empresa extends User
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;   
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Operacion", mappedBy="empresa")
-     */
-    private $operaciones;
-
-    
-    
+    private $id;  
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Producto", mappedBy="empresa")
      */
     private $productos;
 
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $nombre;
+
     public function __construct()
     {
-        $this->operaciones = new ArrayCollection();
+       
         $this->productos = new ArrayCollection();
         $this->roles = array('ROLE_EMPRESA');
         $this->isActive = true;
@@ -48,41 +46,7 @@ class Empresa extends User
         return $this->id;
     }
 
-   
-
-    /**
-     * @return Collection|Operacion[]
-     */
-    public function getOperaciones(): Collection
-    {
-        return $this->operaciones;
-    }
-
-    public function addOperacione(Operacion $operacione): self
-    {
-        if (!$this->operaciones->contains($operacione)) {
-            $this->operaciones[] = $operacione;
-            $operacione->setEmpresa($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOperacione(Operacion $operacione): self
-    {
-        if ($this->operaciones->contains($operacione)) {
-            $this->operaciones->removeElement($operacione);
-            // set the owning side to null (unless already changed)
-            if ($operacione->getEmpresa() === $this) {
-                $operacione->setEmpresa(null);
-            }
-        }
-
-        return $this;
-    }   
-
-    
-
+ 
     /**
      * @return Collection|Producto[]
      */
@@ -110,6 +74,18 @@ class Empresa extends User
                 $producto->setEmpresa(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNombre(): ?string
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre(string $nombre): self
+    {
+        $this->nombre = $nombre;
 
         return $this;
     }

@@ -2,51 +2,14 @@
 
 {% block body %}
     <h1>Nueva factura</h1>
-    <div class="container-fluid" id="paso">
-    	<div class="row">
-    		<div class="col"> 			 
-                <div class="row container-fluid" id="registro">
-                     <div class="col-md-6">                         
-                            <h4 class="card-title">Cliente y fecha</h4>
-                                {{ form_start(form) }}
-                                <hr>
-                                {{ form_widget(form.cliente, { 'attr': {'placeholder': 'Cliente' } }) }}
-                                <br>
-                                <br>
-                                {{ form_widget(form.referencia, { 'attr': {'placeholder': 'Referencia' } }) }}
-                                <br>
-                                <br>
-                                {{ form_widget(form.total, { 'attr': {'placeholder': 'Total' } }) }}
-                                <br> 
-                                <br>                                     
-                                   <input placeholder="Pais" class="ui-autocomplete-input ui-widget ui-widget-content ui-corner-all textInput" autocomplete="on" maxlength="200" name="" type="text">
-
-                                <br>
-                                <br>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Descripción</span>
-                                    </div>
-                                    <textarea class="form-control" aria-label="With textarea"></textarea>
-                                </div>
-
-                                {{ form_end(form) }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
-            </div>                 
-                     
-               
-                 <a href="{{ path('factura_index') }}">Ir a la lista</a>
-    		</div>
-    		<div class="col">    			
-    		</div>
-    	</div>
-    </div>   
-
-   
-    
+    <div class="container-fluid" id="paso">	 
+        <div class="row container-fluid" id="registro">
+            <div class="col-md-6">                         
+                <h4 class="card-title">Cliente y fecha</h4>
+            {{ include('factura/_form.html.twig')}}               
+            </div>            
+        </div>               
+        <a href="{{ path('factura_index') }}">Ir a la lista</a>
+    		  			
+    </div>    
 {% endblock %}

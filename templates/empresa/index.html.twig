@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Nombre</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -16,10 +17,8 @@
         {% for empresa in empresas %}
             <tr>
                 <td>{{ empresa.id }}</td>
-                <td>
-                    <a href="{{ path('empresa_show', {'id': empresa.id}) }}">show</a>
-                    <a href="{{ path('empresa_edit', {'id': empresa.id}) }}">edit</a>
-                </td>
+                <td>{{ empresa.nombre }}</td>
+                            
             </tr>
         {% else %}
             <tr>
@@ -28,6 +27,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('empresa_new') }}">Create new</a>
+   
 {% endblock %}

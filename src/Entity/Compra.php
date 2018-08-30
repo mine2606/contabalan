@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CompraRepository")
  */
-class Compra extends Operacion
+class Compra
 {
     /**
      * @ORM\Id()

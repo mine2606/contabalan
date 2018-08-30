@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,16 +34,6 @@ class Producto
     private $precio;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
-     */
-    private $preciocoste;
-
-    /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
-     */
-    private $precioventa;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Categoria", inversedBy="productos")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -54,24 +46,21 @@ class Producto
     private $empresa;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $cantidad;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $unidad;
-
-    /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Iva", inversedBy="productos")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $iva;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\OneToMany(targetEntity="App\Entity\Lineadepedidos", mappedBy="producto", orphanRemoval=true)
      */
-    private $importe;
+    private $lineadepedidos;
+
+    public function __construct()
+    {
+        $this->lineadepedidos = new ArrayCollection();
+    }
+
 
     public function getId()
     {
@@ -114,30 +103,6 @@ class Producto
         return $this;
     }
 
-    public function getPreciocoste()
-    {
-        return $this->preciocoste;
-    }
-
-    public function setPreciocoste($preciocoste): self
-    {
-        $this->preciocoste = $preciocoste;
-
-        return $this;
-    }
-
-    public function getPrecioventa()
-    {
-        return $this->precioventa;
-    }
-
-    public function setPrecioventa($precioventa): self
-    {
-        $this->precioventa = $precioventa;
-
-        return $this;
-    }
-
     public function getCategoria(): ?Categoria
     {
         return $this->categoria;
@@ -162,51 +127,47 @@ class Producto
         return $this;
     }
 
-    public function getCantidad(): ?int
-    {
-        return $this->cantidad;
-    }
-
-    public function setCantidad(int $cantidad): self
-    {
-        $this->cantidad = $cantidad;
-
-        return $this;
-    }
-
-    public function getUnidad(): ?string
-    {
-        return $this->unidad;
-    }
-
-    public function setUnidad(string $unidad): self
-    {
-        $this->unidad = $unidad;
-
-        return $this;
-    }
-
-    public function getIva(): ?string
+    public function getIva(): ?Iva
     {
         return $this->iva;
     }
 
-    public function setIva(string $iva): self
+    public function setIva(?Iva $iva): self
     {
         $this->iva = $iva;
 
         return $this;
     }
 
-    public function getImporte(): ?float
+    /**
+     * @return Collection|Lineadepedidos[]
+     */
+    public function getLineadepedidos(): Collection
     {
-        return $this->importe;
+        return $this->lineadepedidos;
     }
 
-    public function setImporte(float $importe): self
+    public function addLineadepedido(Lineadepedidos $lineadepedido): self
     {
-        $this->importe = $importe;
+        if (!$this->lineadepedidos->contains($lineadepedido)) {
+            $this->lineadepedidos[] = $lineadepedido;
+            $lineadepedido->setProducto($this);
+        }
 
         return $this;
     }
+
+    public function removeLineadepedido(Lineadepedidos $lineadepedido): self
+    {
+        if ($this->lineadepedidos->contains($lineadepedido)) {
+            $this->lineadepedidos->removeElement($lineadepedido);
+            // set the owning side to null (unless already changed)
+            if ($lineadepedido->getProducto() === $this) {
+                $lineadepedido->setProducto(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
