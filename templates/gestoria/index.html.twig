@@ -14,10 +14,11 @@
             </tr>
         </thead>
         <tbody>
-        {% for gestorium in gestorium %}
+        {% for gestorium in gestorias %}
             <tr>
                 <td>{{ gestorium.id }}</td>
                 <td>{{ gestorium.nombre }}</td>
+                
                 <td>
                     <a href="{{ path('gestoria_show', {'id': gestorium.id}) }}">show</a>
                     <a href="{{ path('gestoria_edit', {'id': gestorium.id}) }}">edit</a>

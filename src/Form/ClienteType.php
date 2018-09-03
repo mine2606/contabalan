@@ -10,6 +10,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+
 
 class ClienteType extends AbstractType
 {
@@ -23,6 +26,7 @@ class ClienteType extends AbstractType
             ->add('cpostal')
             ->add('poblacion')
             ->add('provincia')
+            
             ->add('guardar', SubmitType::class, array())
         ;
     }

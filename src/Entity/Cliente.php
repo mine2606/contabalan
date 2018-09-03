@@ -10,14 +10,14 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ClienteRepository")
  */
-class Cliente
+class Cliente 
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=60)
@@ -62,6 +62,7 @@ class Cliente
     public function __construct()
     {
         $this->factura = new ArrayCollection();
+       
     }
 
     public function getId()

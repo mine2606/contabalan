@@ -21,7 +21,7 @@ class EmpresaController extends Controller
     /**
      * @Route("/", name="empresa_index", methods="GET")
      */
-    public function index(EmpresaRepository $empresaRepository): Response
+    public function index(EmpresaRepository $empresaRepository, Request $request): Response
     {
         return $this->render('empresa/index.html.twig', ['empresas' => $empresaRepository->findAll()]);
     }

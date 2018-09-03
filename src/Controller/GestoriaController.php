@@ -5,10 +5,14 @@ namespace App\Controller;
 use App\Entity\Gestoria;
 use App\Form\GestoriaType;
 use App\Repository\GestoriaRepository;
+use App\Repository\EmpresaRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
  * @Route("/gestoria")
@@ -18,35 +22,26 @@ class GestoriaController extends Controller
     /**
      * @Route("/", name="gestoria_index", methods="GET")
      */
-    public function index(GestoriaRepository $gestoriaRepository, Request $request): Response
+    public function index(GestoriaRepository $gestoriaRepository, Request $request ): Response
     {
-        $gestorium = new Gestoria();
-        $form = $this->createForm(GestoriaType::class, $gestorium);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($gestorium);
-            $em->flush();
-
-            return $this->redirectToRoute('gestoria_index');
-        }
-
         return $this->render('gestoria/index.html.twig', [
-            'gestorium' => $gestorium,
-            'form' => $form->createView(),
-        ]);
+            'gestorias' => $gestoriaRepository->findAll()]);
     }
+
+
     /**
      * @Route("/new", name="gestoria_new", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $gestorium = new Gestoria();
         $form = $this->createForm(GestoriaType::class, $gestorium);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // 3) Encode the password (you could also do this via Doctrine listener)
+            $password = $passwordEncoder->encodePassword($gestorium, $gestorium->getPlainPassword());
+            $gestorium->setPassword($password);
             $em = $this->getDoctrine()->getManager();
             $em->persist($gestorium);
             $em->flush();

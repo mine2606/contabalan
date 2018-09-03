@@ -18,7 +18,7 @@ class Empresa extends User
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;  
+    protected $id;  
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Producto", mappedBy="empresa")

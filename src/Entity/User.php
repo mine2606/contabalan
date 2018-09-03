@@ -25,7 +25,7 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)

@@ -5,20 +5,28 @@
 {% block body %}
     <h1>Empresa index</h1>
 
+     
+
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>actions</th>
+                <th>Nombre usuario</th>
+                <th>Correo electrónico</th>
             </tr>
         </thead>
         <tbody>
         {% for empresa in empresas %}
             <tr>
-                <td>{{ empresa.id }}</td>
-                <td>{{ empresa.nombre }}</td>
-                            
+                <td>{{ empresa.id }}</td>                
+                <td><a href="{{ path('empresa_edit', {'id': empresa.id}) }}">{{ empresa.nombre }}</a> </td>
+                 <td>{{ empresa.username }}</td>
+                <td>{{ empresa.email }}</td>
+                <td><a href="{{ path('empresa_show', {'id': empresa.id}) }}">+ Info</a> </td>                            
+            </tr>
+            <tr>
+
             </tr>
         {% else %}
             <tr>
@@ -27,5 +35,7 @@
         {% endfor %}
         </tbody>
     </table>
+     <a href="{{ path('empresa_new') }}">Añadir empresa</a>
+
    
 {% endblock %}

@@ -9,10 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 use Symfony\Component\Form\FormView;
 use App\Form\FacturaType;
 use App\Entity\Factura;
+
+
 
 /**
  * @Route("/cliente")
@@ -23,12 +24,13 @@ class ClienteController extends Controller
      * @Route("/", name="cliente_index", methods="GET")
      */
     public function index(ClienteRepository $clienteRepository, Request $request): Response
-    {
-        $cliente = new Cliente();
+    {   
+         $cliente = new Cliente();
         $form = $this->createForm(ClienteType::class, $cliente);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($cliente);
             $em->flush();
@@ -37,7 +39,7 @@ class ClienteController extends Controller
         }
 
         return $this->render('cliente/index.html.twig', [
-            'cliente' => $clienteRepository->findAll(),
+            'cliente' => $cliente,
             'form' => $form->createView(),
         ]);
     }
@@ -52,6 +54,7 @@ class ClienteController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($cliente);
             $em->flush();
