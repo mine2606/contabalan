@@ -32,8 +32,8 @@
 						    {{app.user.username}}
 						</a>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						    <a class="dropdown-item" href="#">Action</a>
-						    <a class="dropdown-item" href="#">Another action</a>
+						    <a class="dropdown-item" href="#">Action</a>						    
+						    <a class="dropdown-item" href="{{ path('user_show', {'id': app.user.id }) }}">Mi perfil</a>
 						    <a class="dropdown-item" href="/logout">Cerrar sesion</a>
 						</div>
 					</div>
