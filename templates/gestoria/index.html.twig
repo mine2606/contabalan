@@ -3,26 +3,33 @@
 {% block title %}Gestoria index{% endblock %}
 
 {% block body %}
-    <h1>Gestoria index</h1>
 
+<div class="botonesmodal">    
+    <!-- Button trigger modal -->
+    <a href="{{ path('empresa_new') }}" class="btn btn-secondary btn-sm" role="button" data-toggle="modal" data-target="#modalP" aria-pressed="true">Nueva gestoría</a>
+</div>
+
+
+<div class="container-fluid"> 
     <table class="table">
-        <thead>
+        <thead class="thead" id="gestoriaindex">   
             <tr>
-                <th>Id</th>
+                <th>Nº</th>                
                 <th>Nombre</th>
-                <th>actions</th>
+                <th>Nombre usuario</th>
+                <th>Correo electrónico</th>
+                <th>Detalles</th>
             </tr>
         </thead>
         <tbody>
         {% for gestorium in gestorias %}
             <tr>
                 <td>{{ gestorium.id }}</td>
-                <td>{{ gestorium.nombre }}</td>
+                <td><a href="{{ path('gestoria_edit', {'id': gestorium.id}) }}">{{ gestorium.nombre }}</a> </td>  
+                <td>{{ gestorium.username }}</td>
+                <td>{{ gestorium.email }}</td>             
+                <td><a href="{{ path('gestoria_show', {'id': gestorium.id}) }}">+ Info</a></td> 
                 
-                <td>
-                    <a href="{{ path('gestoria_show', {'id': gestorium.id}) }}">show</a>
-                    <a href="{{ path('gestoria_edit', {'id': gestorium.id}) }}">edit</a>
-                </td>
             </tr>
         {% else %}
             <tr>
@@ -31,6 +38,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('gestoria_new') }}">Create new</a>
+</div>
+   {{ include('gestoria/_modal.html.twig')}}
+    
 {% endblock %}

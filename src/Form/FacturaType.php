@@ -20,8 +20,8 @@ class FacturaType extends AbstractType
         $builder 
         ->add('fecha', DateType::class, array(
              'label' => 'Fecha',
-             'format' => 'dd MM yyyy',
-             'years' => range(date('2018'), date('Y')),
+             'widget' => 'single_text',
+             'html5' => true,
              'required' => true
           ))
         ->add('referencia')

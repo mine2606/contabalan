@@ -27,7 +27,7 @@ class ClienteType extends AbstractType
             ->add('poblacion')
             ->add('provincia')
             
-            ->add('guardar', SubmitType::class, array())
+            
         ;
     }
 

@@ -3,39 +3,41 @@
 {% block title %}Empresa index{% endblock %}
 
 {% block body %}
-    <h1>Empresa index</h1>
-
+   <div class="botonesmodal">        
+        <!-- Button trigger modal -->
+        <a href="{{ path('empresa_new') }}" class="btn btn-secondary btn-sm" role="button" data-toggle="modal" data-target="#modalP" aria-pressed="true">Nueva empresa</a>
+    </div>
      
 
+<div class="container-fluid"> 
     <table class="table">
-        <thead>
+        <thead class="thead" id="empresaindex">      
             <tr>
-                <th>Id</th>
+                <th>Nº</th>
                 <th>Nombre</th>
                 <th>Nombre usuario</th>
                 <th>Correo electrónico</th>
+                <th>Detalles</th>
             </tr>
         </thead>
         <tbody>
-        {% for empresa in empresas %}
-            <tr>
-                <td>{{ empresa.id }}</td>                
-                <td><a href="{{ path('empresa_edit', {'id': empresa.id}) }}">{{ empresa.nombre }}</a> </td>
-                 <td>{{ empresa.username }}</td>
-                <td>{{ empresa.email }}</td>
-                <td><a href="{{ path('empresa_show', {'id': empresa.id}) }}">+ Info</a> </td>                            
-            </tr>
-            <tr>
-
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="2">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
+            {% for empresa in empresas %}
+                <tr>
+                    <td>{{ empresa.id }}</td>                
+                    <td><a href="{{ path('empresa_edit', {'id': empresa.id}) }}">{{ empresa.nombre }}</a> </td>
+                     <td>{{ empresa.username }}</td>
+                    <td>{{ empresa.email }}</td>
+                    <td><a href="{{ path('empresa_show', {'id': empresa.id}) }}">+ Info</a> </td>                            
+                </tr>
+                
+            {% else %}
+                <tr>
+                    <td colspan="2">no records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>   
     </table>
-     <a href="{{ path('empresa_new') }}">Añadir empresa</a>
+</div>
 
-   
+    {{ include('empresa/_modal.html.twig')}}
 {% endblock %}

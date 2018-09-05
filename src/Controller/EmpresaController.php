@@ -19,11 +19,33 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class EmpresaController extends Controller
 {
     /**
-     * @Route("/", name="empresa_index", methods="GET")
+     * @Route("/", name="empresa_index", methods="GET|POST")
      */
-    public function index(EmpresaRepository $empresaRepository, Request $request): Response
+    public function index(EmpresaRepository $empresaRepository, Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        return $this->render('empresa/index.html.twig', ['empresas' => $empresaRepository->findAll()]);
+
+        $empresa = new Empresa();
+        $form = $this->createForm(EmpresaType::class, $empresa);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // 3) Encode the password (you could also do this via Doctrine listener)
+            $password = $passwordEncoder->encodePassword($empresa, $empresa->getPlainPassword());
+            $empresa->setPassword($password);           
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($empresa);
+            $em->flush();
+
+            return $this->redirectToRoute('empresa_index');
+        }
+
+       $empresa = $empresaRepository->findAll();
+
+        return $this->render('empresa/index.html.twig', [
+            'empresas' => $empresa,
+            'form' => $form->createView(),
+        ]);
+            
     }
 
     

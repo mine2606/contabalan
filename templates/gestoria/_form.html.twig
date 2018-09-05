@@ -1,4 +1,50 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<div>
+					<p>* Nombre
+	                {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Nombre', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>           
+				</div>	
+				<div>
+					<p>* Nombre usuario
+	                {{ form_widget(form.username, { 'attr': {'placeholder': 'Nombre usuario', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>           
+				</div>	
+				<div>
+					<p>* Correo electrónico
+	                {{ form_widget(form.email, { 'attr': {'placeholder': 'Correo electrónico', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>           
+				</div>			
+										
+			</div>
+			<div class="col">
+				<div>
+					<p>* Contraseña
+	                {{ form_widget(form.plainPassword, { 'attr': {'placeholder': 'contraseña', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>           
+				</div>	
+				<div>
+					<p>* Rol
+	                {{ form_widget(form.roles, { 'attr': {'placeholder': 'Rol', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>           
+				</div>		
+				<div>
+					<p>* isActive
+	                {{ form_widget(form.isActive, { 'attr': {'placeholder': 'isActive', 'class': 'form-control'}}) }}</p>
+	                <div class="dropdown-divider"></div>           
+				</div>										
+			</div>				
+		</div>	
+		
+
+		<div class="row">			
+			<button id="nuevo" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalCenter">{{ button_label|default('Guardar') }}
+			</button>				
+		</div>
+	
+	</div>   	   
+	
+ {{ form_end(form) }}

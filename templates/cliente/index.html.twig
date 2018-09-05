@@ -3,51 +3,53 @@
 {% block title %}Cliente index{% endblock %}
 
 {% block body %}
-    <h1>Clientes</h1>
 
-
+    <div class="botonesmodal"> 
          <!-- Button trigger modal -->
         <a href="{{ path('proveedor_new') }}" class="btn btn-secondary btn-sm" role="button" data-toggle="modal" data-target="#modalP" aria-pressed="true">Nuevo cliente</a>
+    </div>
 
+<div class="container-fluid"> 
     <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Nif</th>
-                <th>Telefono</th>
-                <!--<th>Calle</th>                
-                <th>Cpostal</th>
-                <th>Poblacion</th>
-                <th>Provincia</th>
-                <th>actions</th>-->
-              
-            </tr>
-        </thead>
-        <tbody>
-        {% for cliente in cliente %}
-            <tr>
-                <td>{{ cliente.id }}</td>
-                <td><a href="{{ path('cliente_edit', {'id': cliente.id}) }}">{{ cliente.nombre }}</a></td>
-                <td>{{ cliente.nif }}</td>
-                <td>{{ cliente.telefono }}</td>
-                <!--<td>{{ cliente.calle }}</td>                
-                <td>{{ cliente.cpostal }}</td>
-                <td>{{ cliente.poblacion }}</td>
-                <td>{{ cliente.provincia }}</td>-->
-                <td>
-                    <a href="{{ path('cliente_show', {'id': cliente.id}) }}">+ Info</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
+            <thead class="thead" id="cliente">
+                <tr>
+                    <th>Nº</th>
+                    <th>Nombre</th>
+                    <th>Nif</th>                    
+                    <th>Telefono</th>
+                    <th>Detalles</th>
+                    <!--<th>Calle</th>                
+                    <th>Cpostal</th>
+                    <th>Poblacion</th>
+                    <th>Provincia</th>
+                    <th>actions</th>-->
+                  
+                </tr>
+            </thead>
+            <tbody>
+            {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.id }}</td>
+                    <td><a href="{{ path('cliente_edit', {'id': cliente.id}) }}">{{ cliente.nombre }}</a></td>
+                    <td>{{ cliente.nif }}</td>
+                    <td>{{ cliente.telefono }}</td>
+                    <td><a href="{{ path('cliente_show', {'id': cliente.id}) }}">+ Info</a></td>
+                    <!--<td>{{ cliente.calle }}</td>                
+                    <td>{{ cliente.cpostal }}</td>
+                    <td>{{ cliente.poblacion }}</td>
+                    <td>{{ cliente.provincia }}</td>-->
+                   
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
     </table>
+</div>
 
     {{ include('cliente/_modal.html.twig')}}
     
-    <a href="{{ path('cliente_index') }}">Lista de clientes</a>
+    
 {% endblock %}

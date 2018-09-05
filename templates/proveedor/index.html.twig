@@ -2,10 +2,11 @@
 
 {% block body %}
   
-        <h1>Proveedores</h1>
-
+    
+    <div class="botonesmodal">        
          <!-- Button trigger modal -->
         <a href="{{ path('proveedor_new') }}" class="btn btn-secondary btn-sm" role="button" data-toggle="modal" data-target="#modalP" aria-pressed="true">Nuevo proveedor</a>
+    </div>
 
 <div class="container-fluid"> 
     <table class="table">
@@ -15,6 +16,7 @@
               <th scope="col">Nombre</th>
               <th scope="col">Teléfono</th>
               <th scope="col">Email</th>
+              <th scope="col">Detalles</th>
             </tr>
         </thead>
         <tbody>
@@ -24,16 +26,14 @@
                     <td><a href="{{ path('proveedor_edit', {'id': proveedor.id}) }}">{{ proveedor.nombre }}</a></td>
                     <td>{{ proveedor.telefono }}</td>
                     <td>{{ proveedor.email }}</td>
+                    <td><a href="{{ path('proveedor_show', {'id': proveedor.id}) }}">+ Info</a></td>
                     <!--<td>{{ proveedor.producto }}</td>                
                     <td>{{ proveedor.referencia }}</td>
                     <td>{{ proveedor.nif }}</td>
                     <td>{{ proveedor.calle }}</td>
                     <td>{{ proveedor.cpostal }}</td>
                     <td>{{ proveedor.poblacion }}</td> -->
-                    <td>
-                        <a href="{{ path('proveedor_show', {'id': proveedor.id}) }}">+ Info</a>
- 
-                    </td>
+                   
                 </tr>
             {% else %}
                 <tr>

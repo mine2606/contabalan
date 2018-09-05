@@ -21,11 +21,11 @@ use App\Entity\Factura;
 class ClienteController extends Controller
 {
     /**
-     * @Route("/", name="cliente_index", methods="GET")
+     * @Route("/", name="cliente_index", methods="GET|POST")
      */
     public function index(ClienteRepository $clienteRepository, Request $request): Response
     {   
-         $cliente = new Cliente();
+        $cliente = new Cliente();
         $form = $this->createForm(ClienteType::class, $cliente);
         $form->handleRequest($request);
 
@@ -38,8 +38,10 @@ class ClienteController extends Controller
             return $this->redirectToRoute('cliente_index');
         }
 
+        $clientes = $clienteRepository->findAll();
+
         return $this->render('cliente/index.html.twig', [
-            'cliente' => $cliente,
+            'clientes' => $clientes,
             'form' => $form->createView(),
         ]);
     }

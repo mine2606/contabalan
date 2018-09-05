@@ -1,18 +1,17 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
 .col-md-10, .col-md-2 {
 	background: -moz-linear-gradient( #a6e3db, white); /* For Firefox 3.6 to 15 */
 	padding-top: 20px;
 	padding-bottom: 30px;
-
 }
 
 .nav > li a {
-	color: black;
+	color: #212529;
 }
 
 .nav-item a {
-	color: black;
-	
+	color: #212529;	
 }
 
 .col-md-2 li {
@@ -28,16 +27,13 @@
 	color: #8c8a8d;
 }
 
-
-
 .nav-item {
-	padding-right: 50px;
+	padding-right: 20px;
 }
 
 .col-md-2 > .nav-item .dropdown-menu .dropdown-item:nth-child(3) {
 	background-color: #ddded6;
 }
-
 
 .registro {
 	background-color: #ffe5b4;
@@ -50,8 +46,7 @@
 
 .container-fluid #proveedor{
 	background-color: #f2f4f6;
-	color:  #686877;
-	
+	color:  #686877;	
 }
 
 .table {
@@ -71,8 +66,6 @@
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
-
-
 
 /*imagenes de la derecha de la pagina de inicio*/
 #lateral > .col-md-3 {
@@ -102,17 +95,60 @@ a {
 }
 
 #encabezadoinicio h1 {
-	margin-left: 400px;
+	margin-left: 480px;
 	margin-top: 60px;
 	color: #ff947a;
 }
 
 #encabezadoinicio p {
-	margin-left: 120px;
+	margin-left: 200px;
 }
 
 
-/*esto es para la pagina de new factura*/
-#paso {
-	
+#cliente, #empresaindex, #gestoriaindex {
+	background-color: #f2f4f6;
 }
+
+/* boton de empresa */
+.botonesmodal .btn-secondary {
+	background-color: #ffbb00;
+	margin-bottom: 20px;
+	margin-left: 35px;
+	border-color: #ffbb00;
+}
+
+.botonesmodal .btn-secondary:focus, .botonesmodal .btn-secondary:hover {
+	border-color: #ffbb00;
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	-webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); 
+	-moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+/* boton nueva factura*/
+#facturanew {
+	margin-bottom: 40px;
+	margin-top: 20px;
+	margin-left: 35px;
+}
+
+/* boton nuevo producto*/
+#productonew {
+	margin-bottom: 40px;
+	margin-top: 20px;
+	margin-left: 35px;
+}
+
+#productoindex {
+	background-color: #212529;
+	color: white;
+}
+
+.container-fluid > .table > tbody a {
+	color: #686877;
+	font-size: bold;
+}
+
+.botonesmodal {
+	margin-top: 30px;
+}
+

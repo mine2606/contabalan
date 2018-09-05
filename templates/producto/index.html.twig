@@ -3,17 +3,24 @@
 {% block title %}Producto index{% endblock %}
 
 {% block body %}
-    <h1>Producto index</h1>
 
+
+<div id="productonew">
+    <h1>Productos</h1>    
+    <a class="btn btn-outline-info" href="{{ path('producto_new') }}" role="button">Nuevo producto</a>
+</div>
+
+
+<div class="container-fluid"> 
     <table class="table">
-        <thead>
+        <thead class="thead" id="productoindex"> 
             <tr>
                 <th>Id</th>
                 <th>Codigo</th>
                 <th>Descripcion</th>
                 <th>Precio</th>
                 
-                <th>actions</th>
+                <th>Detalles</th>
             </tr>
         </thead>
         <tbody>
@@ -23,11 +30,8 @@
                 <td>{{ producto.codigo }}</td>
                 <td>{{ producto.descripcion }}</td>
                 <td>{{ producto.precio }}</td>
+                <td><a href="{{ path('producto_edit', {'id': producto.id}) }}">+ Info</td>
                 
-                <td>
-                    <a href="{{ path('producto_show', {'id': producto.id}) }}">show</a>
-                    <a href="{{ path('producto_edit', {'id': producto.id}) }}">edit</a>
-                </td>
             </tr>
         {% else %}
             <tr>
@@ -36,6 +40,7 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
 
-    <a href="{{ path('producto_new') }}">Create new</a>
+   
 {% endblock %}

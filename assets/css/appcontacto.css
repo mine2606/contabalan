@@ -1,8 +1,10 @@
 #menudos .row .col a {
-	color: black;
+	color: #686877;	
+	text-align: center;
 
 }
 
 #menudos .row .col a:hover {
-	background-color: #eaedf1;
+	background-color: #f2f4f6;
 }
+

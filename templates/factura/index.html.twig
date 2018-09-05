@@ -3,17 +3,18 @@
 {% block title %}Factura index{% endblock %}
 {% block body %}
 
-<input class="form-control" type="text" value="Cuadro de texto...">
+<div id="facturanew"> 
+    <h1>Factura</h1>
+    <a class="btn btn-outline-info" href="{{ path('factura_new') }}" role="button">Nueva factura</a>
+</div>
 
-  
-    <h1>Factura index</h1>
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Nº</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Factura completa</th>
     </tr>
   </thead>
   <tbody>
@@ -36,5 +37,5 @@
 
    
 
-    <a href="{{ path('factura_new') }}">Create new</a>
+   
 {% endblock %}

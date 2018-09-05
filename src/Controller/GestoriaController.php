@@ -20,12 +20,31 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class GestoriaController extends Controller
 {
     /**
-     * @Route("/", name="gestoria_index", methods="GET")
+     * @Route("/", name="gestoria_index", methods="GET|POST")
      */
-    public function index(GestoriaRepository $gestoriaRepository, Request $request ): Response
+    public function index(GestoriaRepository $gestoriaRepository, Request $request, UserPasswordEncoderInterface $passwordEncoder ): Response
     {
+        $gestorium = new Gestoria();
+        $form = $this->createForm(GestoriaType::class, $gestorium);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // 3) Encode the password (you could also do this via Doctrine listener)
+            $password = $passwordEncoder->encodePassword($gestorium, $gestorium->getPlainPassword());
+            $gestorium->setPassword($password);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($gestorium);
+            $em->flush();
+
+            return $this->redirectToRoute('gestoria_index');
+        }
+
+        $gestorium = $gestoriaRepository->findAll();
+
         return $this->render('gestoria/index.html.twig', [
-            'gestorias' => $gestoriaRepository->findAll()]);
+            'gestorias' => $gestorium,
+            'form' => $form->createView(),
+        ]);
     }
 
 
@@ -56,7 +75,7 @@ class GestoriaController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="gestoria_show", methods="GET")
+     * @Route("/{id}", name="gestoria_show", methods="GET", requirements={"id"="\d+"})
      */
     public function show(Gestoria $gestorium): Response
     {
