@@ -18,10 +18,7 @@ class Producto
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=10)
-     */
-    private $codigo;
+   
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -51,15 +48,21 @@ class Producto
      */
     private $iva;
 
+
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Lineadepedidos", mappedBy="producto", orphanRemoval=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $lineadepedidos;
+    private $nombre;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\LineaPedido", mappedBy="producto")
+     */
+    private $lineasPedido;
 
     public function __construct()
     {
-        $this->lineadepedidos = new ArrayCollection();
-    }
+        $this->lineasPedido = new ArrayCollection();
+    }  
 
 
     public function getId()
@@ -67,17 +70,7 @@ class Producto
         return $this->id;
     }
 
-    public function getCodigo(): ?string
-    {
-        return $this->codigo;
-    }
-
-    public function setCodigo(string $codigo): self
-    {
-        $this->codigo = $codigo;
-
-        return $this;
-    }
+    
 
     public function getDescripcion(): ?string
     {
@@ -139,35 +132,51 @@ class Producto
         return $this;
     }
 
-    /**
-     * @return Collection|Lineadepedidos[]
-     */
-    public function getLineadepedidos(): Collection
+
+    public function getNombre(): ?string
     {
-        return $this->lineadepedidos;
+        return $this->nombre;
     }
 
-    public function addLineadepedido(Lineadepedidos $lineadepedido): self
+    public function setNombre(string $nombre): self
     {
-        if (!$this->lineadepedidos->contains($lineadepedido)) {
-            $this->lineadepedidos[] = $lineadepedido;
-            $lineadepedido->setProducto($this);
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LineaPedido[]
+     */
+    public function getLineasPedido(): Collection
+    {
+        return $this->lineasPedido;
+    }
+
+    public function addLineasPedido(LineaPedido $lineasPedido): self
+    {
+        if (!$this->lineasPedido->contains($lineasPedido)) {
+            $this->lineasPedido[] = $lineasPedido;
+            $lineasPedido->setProducto($this);
         }
 
         return $this;
     }
 
-    public function removeLineadepedido(Lineadepedidos $lineadepedido): self
+    public function removeLineasPedido(LineaPedido $lineasPedido): self
     {
-        if ($this->lineadepedidos->contains($lineadepedido)) {
-            $this->lineadepedidos->removeElement($lineadepedido);
+        if ($this->lineasPedido->contains($lineasPedido)) {
+            $this->lineasPedido->removeElement($lineasPedido);
             // set the owning side to null (unless already changed)
-            if ($lineadepedido->getProducto() === $this) {
-                $lineadepedido->setProducto(null);
+            if ($lineasPedido->getProducto() === $this) {
+                $lineasPedido->setProducto(null);
             }
         }
 
         return $this;
     }
 
+    
+
+    
 }

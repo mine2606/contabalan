@@ -17,7 +17,7 @@
         {% for linea_pedido in linea_pedidos %}
             <tr>
                 <td>{{ linea_pedido.id }}</td>
-                <td>{{ linea_pedido.Cantidad }}</td>
+                <td>{{ linea_pedido.cantidad }}</td>
                 <td>
                     <a href="{{ path('linea_pedido_show', {'id': linea_pedido.id}) }}">show</a>
                     <a href="{{ path('linea_pedido_edit', {'id': linea_pedido.id}) }}">edit</a>

@@ -17,30 +17,34 @@ class LineaPedido
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Producto", inversedBy="lineapedidos")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $producto;
+    private $cantidad;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Pedido", inversedBy="lineapedidos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Pedido", inversedBy="lineasPedido")
      * @ORM\JoinColumn(nullable=false)
      */
     private $pedido;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Producto", inversedBy="lineasPedido")
+     */
+    private $producto;
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function getProducto(): ?Producto
+    public function getCantidad(): ?int
     {
-        return $this->producto;
+        return $this->cantidad;
     }
 
-    public function setProducto(?Producto $producto): self
+    public function setCantidad(?int $cantidad): self
     {
-        $this->producto = $producto;
+        $this->cantidad = $cantidad;
 
         return $this;
     }
@@ -53,6 +57,18 @@ class LineaPedido
     public function setPedido(?Pedido $pedido): self
     {
         $this->pedido = $pedido;
+
+        return $this;
+    }
+
+    public function getProducto(): ?Producto
+    {
+        return $this->producto;
+    }
+
+    public function setProducto(?Producto $producto): self
+    {
+        $this->producto = $producto;
 
         return $this;
     }

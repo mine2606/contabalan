@@ -1,10 +1,17 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-.col-md-10, .col-md-2 {
-	background: -moz-linear-gradient( #a6e3db, white); /* For Firefox 3.6 to 15 */
-	padding-top: 20px;
+.navbar {
 	padding-bottom: 30px;
+	margin-top: 30px;
 }
+
+.col-md-3 .nav-item {
+	padding-bottom: 30px;
+	margin-top: 30px;
+	text-align: right;
+	 list-style:none;
+}
+
 
 .nav > li a {
 	color: #212529;
@@ -152,3 +159,47 @@ a {
 	margin-top: 30px;
 }
 
+
+
+/* PAGINA DE INICIO  */
+
+.progress-bar {
+	background-color: #9ec73d;
+	width: 50%;
+
+}
+
+.progress-bar2 {
+	background-color: #6cb742;
+	width: 30%;
+}
+
+.progress-bar3 {
+	background-color: #4ba141;
+	width: 20%
+}
+
+.progress {
+	height: 50px;
+}
+
+.container-fluid .row .col-md-9 .card .card-body h3 {
+	padding-top: 20px;
+	font-size: 1.3em;
+	font-style: oblique; 
+}
+
+.container-fluid .row .col-md-9 .card .card-body .progress p {
+	color: white;
+	font-size: 1.3em;
+	text-align: left;
+}
+
+.container-fluid .row .col-md-9 .card .card-body .row a {
+	color: black;	
+}
+
+.container-fluid .row .col-md-9 .card .card-body .row a:hover {
+	color: grey;
+	text-decoration:none;	
+}

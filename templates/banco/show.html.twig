@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Banco{% endblock %}
+
+{% block body %}
+    <h1>Banco</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ banco.id }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ banco.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ banco.fecha ? banco.fecha|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Importe</th>
+                <td>{{ banco.importe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('banco_index') }}">back to list</a>
+
+    <a href="{{ path('banco_edit', {'id': banco.id}) }}">edit</a>
+
+    {{ include('banco/_delete_form.html.twig') }}
+{% endblock %}

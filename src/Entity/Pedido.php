@@ -18,49 +18,109 @@ class Pedido
      */
     private $id;
 
+    
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\LineaPedido", mappedBy="pedido")
+     * @ORM\Column(type="date", nullable=true)
      */
-    private $lineapedidos;
+    private $fecha;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numpedido;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $total;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\LineaPedido", mappedBy="pedido", orphanRemoval=true)
+     */
+    private $lineasPedido;
+
+
 
     public function __construct()
     {
-        $this->lineapedidos = new ArrayCollection();
+        $this->lineasPedido = new ArrayCollection();
     }
+
+    
 
     public function getId()
     {
         return $this->id;
     }
 
+    
+
+    public function getFecha(): ?\DateTimeInterface
+    {
+        return $this->fecha;
+    }
+
+    public function setFecha(?\DateTimeInterface $fecha): self
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    public function getNumpedido(): ?int
+    {
+        return $this->numpedido;
+    }
+
+    public function setNumpedido(?int $numpedido): self
+    {
+        $this->numpedido = $numpedido;
+
+        return $this;
+    }
+
+    public function getTotal(): ?float
+    {
+        return $this->total;
+    }
+
+    public function setTotal(?float $total): self
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
     /**
      * @return Collection|LineaPedido[]
      */
-    public function getLineapedidos(): Collection
+    public function getLineasPedido(): Collection
     {
-        return $this->lineapedidos;
+        return $this->lineasPedido;
     }
 
-    public function addLineapedido(LineaPedido $lineapedido): self
+    public function addLineasPedido(LineaPedido $lineasPedido): self
     {
-        if (!$this->lineapedidos->contains($lineapedido)) {
-            $this->lineapedidos[] = $lineapedido;
-            $lineapedido->setPedido($this);
+        if (!$this->lineasPedido->contains($lineasPedido)) {
+            $this->lineasPedido[] = $lineasPedido;
+            $lineasPedido->setPedido($this);
         }
 
         return $this;
     }
 
-    public function removeLineapedido(LineaPedido $lineapedido): self
+    public function removeLineasPedido(LineaPedido $lineasPedido): self
     {
-        if ($this->lineapedidos->contains($lineapedido)) {
-            $this->lineapedidos->removeElement($lineapedido);
+        if ($this->lineasPedido->contains($lineasPedido)) {
+            $this->lineasPedido->removeElement($lineasPedido);
             // set the owning side to null (unless already changed)
-            if ($lineapedido->getPedido() === $this) {
-                $lineapedido->setPedido(null);
+            if ($lineasPedido->getPedido() === $this) {
+                $lineasPedido->setPedido(null);
             }
         }
 
         return $this;
     }
+
+    
 }

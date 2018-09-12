@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Banco index{% endblock %}
+
+{% block body %}
+
+    <div class="bancoindex">
+        <h1>Bancos</h1>
+        
+    </div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <!--<th>Id</th>-->
+                <th>Descripcion</th>
+                <th>Fecha</th>
+                <th>Importe</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for banco in bancos %}
+            <tr>
+                <!--<td>{{ banco.id }}</td>-->
+                <td>{{ banco.descripcion }}</td>
+                <td>{{ banco.fecha ? banco.fecha|date('Y-m-d') : '' }}</td>
+                <td>{{ banco.importe }}</td>
+                <td>
+                    <a href="{{ path('banco_show', {'id': banco.id}) }}">show</a>
+                    <a href="{{ path('banco_edit', {'id': banco.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('banco_new') }}">Create new</a>
+{% endblock %}

@@ -15,8 +15,8 @@
     <table class="table">
         <thead class="thead" id="productoindex"> 
             <tr>
-                <th>Id</th>
-                <th>Codigo</th>
+                <th>Nº</th>
+                <th>Nombre</th>
                 <th>Descripcion</th>
                 <th>Precio</th>
                 
@@ -27,7 +27,7 @@
         {% for producto in productos %}
             <tr>
                 <td>{{ producto.id }}</td>
-                <td>{{ producto.codigo }}</td>
+                <td>{{ producto.nombre }}</td>
                 <td>{{ producto.descripcion }}</td>
                 <td>{{ producto.precio }}</td>
                 <td><a href="{{ path('producto_edit', {'id': producto.id}) }}">+ Info</td>

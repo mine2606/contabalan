@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Iva;
 use App\Entity\Producto;
+use App\Form\ProductoType;
 use App\Entity\Categoria;
 use App\Entity\Empresa;
+use App\Entity\LineaPedido;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -17,9 +19,14 @@ class ProductoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('codigo')
+            ->add('nombre')
             ->add('descripcion')
-            ->add('precio')            
+            ->add('precio') 
+            /*->add('lineaPedido',EntityType::class,array(
+                'class' => LineaPedido::class,
+                'choice_label' => function ($lineaPedido) {
+                    return $lineaPedido->getCantidad(); 
+            }))  */          
             ->add('categoria',EntityType::class,array(
                 'class' => Categoria::class,
                 'choice_label' => function ($categoria) {

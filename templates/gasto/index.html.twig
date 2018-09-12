@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gasto index{% endblock %}
+
+{% block body %}
+    <h1>Gasto index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+                <th>Fecha</th>
+                <th>Importe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gasto in gastos %}
+            <tr>
+                <td>{{ gasto.id }}</td>
+                <td>{{ gasto.descripcion }}</td>
+                <td>{{ gasto.fecha ? gasto.fecha|date('Y-m-d') : '' }}</td>
+                <td>{{ gasto.importe }}</td>
+                <td>
+                    <a href="{{ path('gasto_show', {'id': gasto.id}) }}">show</a>
+                    <a href="{{ path('gasto_edit', {'id': gasto.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('gasto_new') }}">Create new</a>
+{% endblock %}

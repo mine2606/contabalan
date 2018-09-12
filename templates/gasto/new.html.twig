@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Gasto{% endblock %}
+
+{% block body %}
+    <h1>Create new Gasto</h1>
+
+    {{ include('gasto/_form.html.twig') }}
+
+    <a href="{{ path('gasto_index') }}">back to list</a>
+{% endblock %}
